@@ -2,7 +2,6 @@ import './index.scss'
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import CursorFollower from '../CursorFollower'
-import SectionIndicator from '../ui/SectionIndicator'
 
 const FlowFieldBackground = lazy(() => import('../Background/FlowFieldBackground'))
 
@@ -45,7 +44,6 @@ const Layout = () => {
         </Suspense>
       ) : null}
       <CursorFollower enabled={!prefersReducedMotion} />
-      <SectionIndicator />
       <div className='page' id='main-content' tabIndex='-1'>
         <Outlet />
       </div>

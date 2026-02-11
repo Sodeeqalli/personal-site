@@ -1,6 +1,4 @@
-# Monochrome Portfolio
-
-Minimal black/white personal portfolio built with React, Framer Motion, and a custom Canvas 2D flow-field background.
+# Monochrome Personal Landing
 
 ## Stack
 
@@ -24,11 +22,6 @@ All site content is centralized here:
 Update these exports:
 
 - `heroContent`: hero name, role, subtitle, email
-- `aboutContent`: about paragraphs, quick facts, portraits
-- `skills`: skills and percentages
-- `projectEntries`: projects/certifications list
-- `experienceCards`: experience cards
-- `timelineEvents`, `stageNarratives`, `timelineBounds`: life journey timeline
 - `linkItems`: social/contact links
 
 ## Flow-Field Background Notes
