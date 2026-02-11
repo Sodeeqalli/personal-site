@@ -10,6 +10,26 @@
   margin: 0 auto;
 }
 
+.skip-link {
+  position: fixed;
+  top: -40px;
+  left: 0.8rem;
+  z-index: 100;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.44rem 0.7rem;
+  transition: top 160ms ease;
+}
+
+.skip-link:focus-visible {
+  top: 0.9rem;
+}
+
 .flowfield-bg {
   position: fixed;
   inset: 0;

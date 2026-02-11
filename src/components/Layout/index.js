@@ -36,6 +36,9 @@ const Layout = () => {
 
   return (
     <div className='App'>
+      <a className='skip-link' href='#main-content'>
+        Skip to content
+      </a>
       {allowBackgroundMount ? (
         <Suspense fallback={null}>
           <FlowFieldBackground enabled={backgroundActive} />
@@ -43,7 +46,7 @@ const Layout = () => {
       ) : null}
       <CursorFollower enabled={!prefersReducedMotion} />
       <SectionIndicator />
-      <div className='page'>
+      <div className='page' id='main-content' tabIndex='-1'>
         <Outlet />
       </div>
     </div>

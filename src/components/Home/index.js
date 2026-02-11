@@ -130,7 +130,7 @@ const Home = () => {
             <div className='about-portraits'>
               {aboutContent.portraits.map((portrait, index) => (
                 <figure className={`portrait portrait--${index + 1}`} key={portrait.alt}>
-                  <img src={portrait.src} alt={portrait.alt} loading='lazy' />
+                  <img src={portrait.src} alt={portrait.alt} loading='lazy' decoding='async' />
                 </figure>
               ))}
             </div>
@@ -190,7 +190,7 @@ const Home = () => {
             <Reveal key={entry.name} delay={Math.min(index * 0.08, 0.24)} amount={0.2}>
               <article className='project-card'>
                 <div className='project-media'>
-                  <img src={entry.media} alt={`${entry.name} visual`} loading='lazy' />
+                  <img src={entry.media} alt={`${entry.name} visual`} loading='lazy' decoding='async' />
                 </div>
                 <div className='project-body'>
                   <h3>{entry.name}</h3>
