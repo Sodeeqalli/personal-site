@@ -1,18 +1,12 @@
 import './index.scss'
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import TopNav from '../TopNav'
 import CursorFollower from '../CursorFollower'
 
 const NeuronBackground = lazy(() => import('../Background/NeuronBackground'))
 
 const Layout = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
-  const [backgroundEnabled, setBackgroundEnabled] = useState(() => {
-    if (typeof window === 'undefined') return true
-    const stored = window.localStorage.getItem('background-enabled')
-    return stored == null ? true : stored === 'true'
-  })
   const [allowBackgroundMount, setAllowBackgroundMount] = useState(false)
 
   useEffect(() => {
@@ -37,28 +31,10 @@ const Layout = () => {
     return () => window.clearTimeout(handle)
   }, [])
 
-  const backgroundActive = useMemo(
-    () => backgroundEnabled && !prefersReducedMotion,
-    [backgroundEnabled, prefersReducedMotion]
-  )
-
-  const toggleBackground = () => {
-    setBackgroundEnabled(current => {
-      const next = !current
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem('background-enabled', String(next))
-      }
-      return next
-    })
-  }
+  const backgroundActive = useMemo(() => !prefersReducedMotion, [prefersReducedMotion])
 
   return (
     <div className='App'>
-      <TopNav
-        backgroundEnabled={backgroundEnabled}
-        onToggleBackground={toggleBackground}
-        motionDisabled={prefersReducedMotion}
-      />
       {allowBackgroundMount ? (
         <Suspense fallback={null}>
           <NeuronBackground enabled={backgroundActive} />
