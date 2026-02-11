@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap');
 
 *,
 *::before,
@@ -13,8 +13,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: var(--font-body);
-  color: var(--text-soft);
+  font-family: var(--font-main);
+  color: var(--text-body);
+  background: #050505;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -24,9 +25,9 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input {
   font: inherit;
-  cursor: pointer;
 }
 
 img {
@@ -38,15 +39,14 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: var(--font-main);
+  font-weight: 700;
   color: var(--text-strong);
-  font-family: var(--font-display);
-  line-height: 1.04;
-  margin: 0;
+  line-height: 1;
 }
 
 p {
-  margin: 0;
-  line-height: 1.65;
+  color: var(--text-body);
 }
 
 #root {
@@ -56,7 +56,7 @@ p {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--accent) 68%, #ffffff);
+  outline: 2px solid rgba(255, 255, 255, 0.86);
   outline-offset: 2px;
 }
 

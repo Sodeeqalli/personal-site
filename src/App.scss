@@ -1,27 +1,23 @@
 :root {
-  --bg: #f7f8f6;
-  --bg-alt: #f2f4ef;
-  --surface-base: #f7f8f6;
-  --surface-raised: #ffffff;
-  --text-strong: #15231c;
-  --text-soft: #31423a;
-  --text-muted: #5f7168;
-  --border-soft: rgba(21, 35, 28, 0.12);
-  --accent: #2f7756;
-  --accent-soft: #c8e2d3;
-  --shadow-soft: 0 14px 34px rgba(14, 24, 19, 0.08);
-  --shadow-lift: 0 20px 44px rgba(14, 24, 19, 0.12);
-  --font-display: 'Playfair Display', 'Times New Roman', serif;
-  --font-body: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --bg: #050505;
+  --bg-soft: #0d0d0d;
+  --surface: rgba(255, 255, 255, 0.02);
+  --surface-border: rgba(255, 255, 255, 0.14);
+  --text-strong: #f4f4f3;
+  --text-body: rgba(244, 244, 243, 0.78);
+  --text-muted: rgba(244, 244, 243, 0.62);
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.36);
+  --shadow-lift: 0 20px 42px rgba(0, 0, 0, 0.48);
+  --font-main: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .App {
   min-height: 100vh;
-  color: var(--text-soft);
+  color: var(--text-strong);
   background:
-    radial-gradient(circle at 20% -15%, rgba(175, 210, 189, 0.35), transparent 44%),
-    radial-gradient(circle at 80% 0%, rgba(216, 230, 223, 0.52), transparent 46%),
-    linear-gradient(180deg, var(--bg), var(--bg-alt));
+    radial-gradient(1200px 680px at 50% -20%, rgba(255, 255, 255, 0.08), transparent 70%),
+    radial-gradient(1000px 540px at 85% 10%, rgba(255, 255, 255, 0.04), transparent 65%),
+    linear-gradient(180deg, var(--bg), var(--bg-soft));
   position: relative;
   isolation: isolate;
 }
@@ -32,11 +28,18 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.45),
-    rgba(255, 255, 255, 0.15)
-  );
+  background: radial-gradient(circle at 50% 45%, transparent 50%, rgba(0, 0, 0, 0.34) 100%);
+}
+
+.App::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
 }
 
 .container {
