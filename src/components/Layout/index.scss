@@ -1,8 +1,56 @@
 .page {
-  width: 100%;
+  width: min(1120px, 100% - 2rem);
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  padding: clamp(1.4rem, 3.2vw, 2.4rem) 0 clamp(4rem, 10vh, 8rem);
 }
 
 .text-zone {
-  max-width: 960px;
+  max-width: 76ch;
   margin: 0 auto;
+}
+
+.neuron-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.62;
+}
+
+.neuron-bg canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cursor-follower {
+  position: fixed;
+  left: -12px;
+  top: -12px;
+  width: 24px;
+  height: 24px;
+  z-index: 45;
+  pointer-events: none;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 44%, transparent);
+  background: color-mix(in srgb, var(--accent-soft) 42%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 18%, transparent);
+  opacity: 0;
+  transform: translate3d(-999px, -999px, 0);
+}
+
+@media (max-width: 760px) {
+  .page {
+    width: min(1120px, 100% - 1.25rem);
+  }
+
+  .cursor-follower {
+    display: none;
+  }
+
+  .neuron-bg {
+    opacity: 0.42;
+  }
 }
