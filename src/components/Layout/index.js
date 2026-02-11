@@ -2,6 +2,7 @@ import './index.scss'
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import CursorFollower from '../CursorFollower'
+import SectionIndicator from '../ui/SectionIndicator'
 
 const NeuronBackground = lazy(() => import('../Background/NeuronBackground'))
 
@@ -41,6 +42,7 @@ const Layout = () => {
         </Suspense>
       ) : null}
       <CursorFollower enabled={!prefersReducedMotion} />
+      <SectionIndicator />
       <div className='page'>
         <Outlet />
       </div>
