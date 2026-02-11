@@ -1,12 +1,7 @@
 import './index.scss'
 import { NavLink } from 'react-router-dom'
 
-const links = [
-  { label: 'HOME', to: '/' },
-  { label: 'ABOUT', to: '/about' },
-  { label: 'PORTFOLIO', to: '/portfolio' },
-  { label: 'EXPERIENCE', to: '/work' },
-]
+const links = [{ label: 'HOME', to: '/' }]
 
 const TopNav = ({ backgroundEnabled, onToggleBackground, motionDisabled }) => {
   return (
@@ -17,7 +12,7 @@ const TopNav = ({ backgroundEnabled, onToggleBackground, motionDisabled }) => {
         </NavLink>
         <nav className='top-nav__links' aria-label='Primary'>
           {links.map(link => (
-            <NavLink key={link.to} to={link.to}>
+            <NavLink key={link.to} to={link.to} end>
               {link.label}
             </NavLink>
           ))}

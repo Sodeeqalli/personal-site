@@ -1,16 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiscord, faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons'
-import PortraitOne from '../../assets/images/IMG_9488.JPG'
-import PortraitTwo from '../../assets/images/IMG_9517.JPG'
-import PortraitThree from '../../assets/images/IMG_9524.JPG'
-import LogoGdg from '../../assets/images/GDG Babcock.jpeg'
-import LogoKdn from '../../assets/images/kdn.jpeg'
-import LogoNsbe from '../../assets/images/nsbe.jpeg'
-import LogoSchulich from '../../assets/images/schulich.jpeg'
-import LogoUfit from '../../assets/images/ufitfly.jpeg'
 import Reveal from '../ui/Reveal'
 import './index.scss'
 
@@ -29,39 +20,6 @@ const socialLinks = [
   { label: 'Discord', href: 'https://discordapp.com/users/sodeeqalli', icon: faDiscord },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sodeeq-alli-94071b267/', icon: faLinkedin },
   { label: 'Credly', href: 'https://www.credly.com/users/sodeeq-alli', icon: null },
-]
-
-const experiences = [
-  {
-    company: 'Schulich Ignite · UofC',
-    role: 'Python Mentor',
-    dates: 'Sep 2025 – Present · Calgary, CA',
-    logoImage: LogoSchulich,
-  },
-  {
-    company: 'NSBE · UofC',
-    role: 'Software Engineer',
-    dates: 'Oct 2025 – Present · Calgary, CA',
-    logoImage: LogoNsbe,
-  },
-  {
-    company: 'KDN+',
-    role: 'Software Engineer',
-    dates: 'Jul 2024 – Oct 2024 · Remote',
-    logoImage: LogoKdn,
-  },
-  {
-    company: 'GDG On Campus · Babcock',
-    role: 'Mobile Application Developer',
-    dates: 'Jan 2024 – Jul 2024 · Ogun, NG',
-    logoImage: LogoGdg,
-  },
-  {
-    company: 'UfitFly',
-    role: 'Intern',
-    dates: 'Jan 2023 – Jul 2023 · Oyo, NG',
-    logoImage: LogoUfit,
-  },
 ]
 
 const techBadges = [
@@ -155,39 +113,8 @@ const Home = () => {
               <p className='hero-sub'>Located Calgary, AB · MEng @ University of Calgary</p>
               <div className='hero-cta'>
                 <a href='mailto:sodeeqalli@gmail.com'>Contact me</a>
-                <Link to='/portfolio'>Open portfolio</Link>
+                <a href='https://www.linkedin.com/in/sodeeq-alli-94071b267/' target='_blank' rel='noreferrer'>LinkedIn</a>
               </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className='home-section'>
-        <Reveal>
-          <div className='home-grid'>
-            <div className='photo-column'>
-              <figure className='photo-card photo-card--a'>
-                <img src={PortraitOne} alt='Portrait of Sodeeq in purple tones' loading='lazy' />
-              </figure>
-              <figure className='photo-card photo-card--b'>
-                <img src={PortraitTwo} alt='Portrait of Sodeeq in yellow tones' loading='lazy' />
-              </figure>
-              <figure className='photo-card photo-card--c'>
-                <img src={PortraitThree} alt='Portrait of Sodeeq close-up' loading='lazy' />
-              </figure>
-            </div>
-
-            <div className='info-column'>
-              <h2>About</h2>
-              <ul className='fact-list'>
-                <li>21</li>
-                <li>Located Calgary, AB</li>
-                <li>MEng @ University of Calgary</li>
-                <li>Love football more than words can express</li>
-                <li>I also love teaching</li>
-                <li>I play table-tennis</li>
-                <li>Python, AWS, JS</li>
-              </ul>
               <div className='social-links'>
                 {socialLinks.map(link => (
                   <a key={link.label} href={link.href} target='_blank' rel='noreferrer' aria-label={link.label}>
@@ -212,26 +139,6 @@ const Home = () => {
             <div className='badge-cloud' aria-hidden='true'>
               {techBadges.map((logo, index) => (
                 <span key={`${logo}-${index}`} style={{ backgroundImage: `url(${logo})` }} />
-              ))}
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className='home-section'>
-        <Reveal>
-          <div className='experience-panel'>
-            <h2>Experience</h2>
-            <div className='experience-grid'>
-              {experiences.map(item => (
-                <article key={item.company} className='experience-card'>
-                  <div className='experience-card__cover' style={{ backgroundImage: `url(${item.logoImage})` }} />
-                  <div className='experience-card__copy'>
-                    <p>{item.company}</p>
-                    <h3>{item.role}</h3>
-                    <span>{item.dates}</span>
-                  </div>
-                </article>
               ))}
             </div>
           </div>
