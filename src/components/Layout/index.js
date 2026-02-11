@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import CursorFollower from '../CursorFollower'
 import SectionIndicator from '../ui/SectionIndicator'
 
-const NeuronBackground = lazy(() => import('../Background/NeuronBackground'))
+const FlowFieldBackground = lazy(() => import('../Background/FlowFieldBackground'))
 
 const Layout = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -38,7 +38,7 @@ const Layout = () => {
     <div className='App'>
       {allowBackgroundMount ? (
         <Suspense fallback={null}>
-          <NeuronBackground enabled={backgroundActive} />
+          <FlowFieldBackground enabled={backgroundActive} />
         </Suspense>
       ) : null}
       <CursorFollower enabled={!prefersReducedMotion} />
