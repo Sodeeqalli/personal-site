@@ -1,21 +1,2 @@
-:root {
-  --text-primary: #205840;
-}
-
-.App {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #fffdf6, #f2f0d3);
-  color: var(--text-primary);
-  display: flex;
-  flex-direction: column;
-}
-
-.page {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  width: 100%;
-}
+@import './styles/tokens.css';
+@import './styles/portfolio.scss';
