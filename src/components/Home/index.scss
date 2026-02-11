@@ -1,6 +1,5 @@
 .home-page {
   display: grid;
-  gap: clamp(2.4rem, 6vh, 5rem);
 }
 
 .home-hero {
@@ -86,10 +85,6 @@
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border-soft));
 }
 
-.home-section {
-  display: grid;
-}
-
 .social-links {
   margin-top: 0.3rem;
   display: flex;
@@ -119,56 +114,6 @@
 .social-links svg {
   width: 56%;
   height: 56%;
-}
-
-.skills-panel {
-  border: 1px solid var(--border-soft);
-  border-radius: 1.4rem;
-  background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
-  box-shadow: var(--shadow-soft);
-  padding: clamp(1rem, 3.4vw, 2rem);
-  display: grid;
-  gap: 1rem;
-}
-
-.skills-panel h2 {
-  font-size: clamp(1.9rem, 5vw, 3.4rem);
-  letter-spacing: 0.01em;
-}
-
-.services-list {
-  display: grid;
-  gap: 0.56rem;
-}
-
-.services-list p {
-  margin: 0;
-  color: var(--text-strong);
-  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
-  letter-spacing: 0.02em;
-}
-
-.badge-cloud {
-  margin-top: 0.2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.badge-cloud span {
-  width: 31px;
-  height: 31px;
-  border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  background-color: rgba(255, 255, 255, 0.94);
-  background-size: 58%;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 180ms ease;
-}
-
-.badge-cloud span:hover {
-  transform: translateY(-2px) scale(1.04);
 }
 
 @media (max-width: 640px) {
