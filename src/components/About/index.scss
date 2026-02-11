@@ -1,0 +1,106 @@
+.about-page {
+  display: grid;
+}
+
+.about-page .text-zone {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.about-header {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.about-header p {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+.about-header h1 {
+  font-size: clamp(2rem, 5.8vw, 4rem);
+  max-width: 18ch;
+}
+
+.about-copy {
+  display: grid;
+  gap: 0.85rem;
+  color: var(--text-soft);
+}
+
+.skills-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: 1.3rem;
+  background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.skills-panel h2 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+
+.tool-skills {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.skill-row {
+  border: 1px solid var(--border-soft);
+  border-radius: 0.9rem;
+  padding: 0.72rem;
+  background: color-mix(in srgb, var(--surface-raised) 74%, transparent);
+  transition: transform 170ms ease, border-color 170ms ease;
+}
+
+.skill-row:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-soft));
+}
+
+.skill-row__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-strong);
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.skill-percent {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.skill-bar {
+  margin-top: 0.55rem;
+  width: 100%;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(18, 32, 24, 0.12);
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  display: block;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 45%, #8cc2a6));
+}

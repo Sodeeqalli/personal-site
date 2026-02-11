@@ -1,8 +1,8 @@
-import './index.scss'
-import AnimatedLetters from '../AnimatedLetters'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSchool, faBriefcase, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faBriefcase, faSchool, faStar } from '@fortawesome/free-solid-svg-icons'
+import Reveal from '../ui/Reveal'
+import './index.scss'
 
 const minYear = 2004
 const maxYear = 2025
@@ -70,12 +70,6 @@ const timelineEvents = [
   },
 ]
 
-const eventIcons = {
-  school: faSchool,
-  work: faBriefcase,
-  milestone: faStar,
-}
-
 const stageNarratives = [
   { maxAge: 2, label: 'Infant Explorer', note: 'Tiny footsteps and endless wonder.' },
   { maxAge: 6, label: 'Curious Kid', note: 'Asking why about everything under the sun.' },
@@ -85,139 +79,83 @@ const stageNarratives = [
   { maxAge: 40, label: 'Systems Craftsman', note: 'Designing cloud-native journeys with confidence.' },
 ]
 
+const icons = {
+  school: faSchool,
+  work: faBriefcase,
+  milestone: faStar,
+}
+
 const Work = () => {
-  const [letterClass, setLetterClass] = useState('text-animate')
   const [currentYear, setCurrentYear] = useState(minYear)
-  const [eventToast, setEventToast] = useState(null)
-  const toastTimeoutRef = useRef(null)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLetterClass('text-animate-hover'), 4000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    if (toastTimeoutRef.current) {
-      clearTimeout(toastTimeoutRef.current)
-      toastTimeoutRef.current = null
-    }
-    const match = timelineEvents.find(event => event.year === currentYear)
-    if (match) {
-      setEventToast(match)
-      toastTimeoutRef.current = setTimeout(() => {
-        setEventToast(null)
-        toastTimeoutRef.current = null
-      }, 4200)
-    } else {
-      setEventToast(null)
-    }
-    return () => {
-      if (toastTimeoutRef.current) {
-        clearTimeout(toastTimeoutRef.current)
-        toastTimeoutRef.current = null
-      }
-    }
-  }, [currentYear])
 
   const age = currentYear - minYear
-  const growthProgress = (currentYear - minYear) / (maxYear - minYear)
-  const growthScale = 0.65 + growthProgress * 0.8
-  const progressPercent = Math.min(
-    100,
-    Math.max(0, ((currentYear - minYear) / (maxYear - minYear)) * 100)
+  const progressPercent = Math.max(0, Math.min(100, ((currentYear - minYear) / (maxYear - minYear)) * 100))
+
+  const currentEvent = useMemo(
+    () => timelineEvents.find(event => event.year === currentYear),
+    [currentYear]
   )
 
-  const stage = useMemo(() => {
-    return stageNarratives.find(item => age <= item.maxAge) ?? stageNarratives[stageNarratives.length - 1]
-  }, [age])
-
-  const handleMarkerSelect = useCallback(year => {
-    setCurrentYear(year)
-  }, [])
+  const stage = useMemo(
+    () => stageNarratives.find(item => age <= item.maxAge) ?? stageNarratives[stageNarratives.length - 1],
+    [age]
+  )
 
   return (
     <div className='container work-page'>
       <div className='text-zone'>
-        <h1>
-          <AnimatedLetters
-            letterClass={letterClass}
-            strArray={[...'Life Journey']}
-            idx={15}
-          />
-        </h1>
-        <p className='journey-intro'>
-          Slide through the years to watch my story unfold. Every step unlocks a checkpoint—from first classrooms and
-          hackathons to shipping production-ready cloud solutions in 2025.
-        </p>
+        <Reveal>
+          <header className='work-header'>
+            <p>Experience</p>
+            <h1>Life Journey</h1>
+            <p className='work-sub'>
+              Slide through the years to watch my story unfold. Every step unlocks a checkpoint from first classrooms
+              and hackathons to shipping production-ready cloud solutions in 2025.
+            </p>
+          </header>
+        </Reveal>
 
-        <div className='timeline-card'>
-          <div className='growth-panel'>
-            <div className='growth-figure'>
-              <div className='growth-person' style={{ '--growth-scale': growthScale }} />
-            </div>
-            <div className='growth-status'>
-              <span className='stage-label'>{stage.label}</span>
-              <span className='stage-note'>{stage.note}</span>
-              <span className='current-year'>Year: {currentYear}</span>
-              <span className='current-age'>Age: {age}</span>
-            </div>
-          </div>
-
-          <div className='timeline-panel'>
-            <div className='timeline-track' aria-hidden='true'>
-              <div className='timeline-progress' style={{ width: `${progressPercent}%` }} />
-              {timelineEvents.map(event => (
-                <button
-                  key={event.year}
-                  type='button'
-                  className={`timeline-marker ${currentYear >= event.year ? 'is-unlocked' : ''} ${
-                    currentYear === event.year ? 'is-active' : ''
-                  }`}
-                  style={{ left: `${((event.year - minYear) / (maxYear - minYear)) * 100}%` }}
-                  onClick={() => handleMarkerSelect(event.year)}
-                  aria-label={`Jump to ${event.year}: ${event.title}`}
-                >
-                  <span className='marker-dot' />
-                  <span className='marker-year'>{event.year}</span>
-                </button>
-              ))}
+        <Reveal delay={0.06}>
+          <section className='journey-panel'>
+            <div className='journey-meta'>
+              <h2>{stage.label}</h2>
+              <p>{stage.note}</p>
+              <span>Year: {currentYear}</span>
+              <span>Age: {age}</span>
             </div>
 
-            <div className='timeline-controls'>
-              <span className='year-start'>{minYear}</span>
-              <input
-                type='range'
-                min={minYear}
-                max={maxYear}
-                step={1}
-                value={currentYear}
-                onChange={event => setCurrentYear(Number(event.target.value))}
-                aria-label='Select a year to explore the journey'
-                className='timeline-slider'
-              />
-              <span className='year-end'>{maxYear}</span>
+            <div className='journey-controls'>
+              <div className='timeline-track' aria-hidden='true'>
+                <span style={{ width: `${progressPercent}%` }} />
+              </div>
+              <div className='timeline-range'>
+                <span>{minYear}</span>
+                <input
+                  type='range'
+                  min={minYear}
+                  max={maxYear}
+                  step={1}
+                  value={currentYear}
+                  onChange={event => setCurrentYear(Number(event.target.value))}
+                  aria-label='Select a year to explore the journey'
+                />
+                <span>{maxYear}</span>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div className='timeline-legend'>
-          <span><FontAwesomeIcon icon={faSchool} /> School</span>
-          <span><FontAwesomeIcon icon={faBriefcase} /> Work</span>
-          <span><FontAwesomeIcon icon={faStar} /> Milestone</span>
-        </div>
-
-        {eventToast && (
-          <div className={`event-toast type-${eventToast.type}`}>
-            <div className='event-icon'>
-              <FontAwesomeIcon icon={eventIcons[eventToast.type] ?? faStar} />
-            </div>
-            <div className='event-copy'>
-              <span className='event-year'>{eventToast.year}</span>
-              <h3>{eventToast.title}</h3>
-              <p>{eventToast.description}</p>
-            </div>
-          </div>
-        )}
+            {currentEvent ? (
+              <article className='event-card'>
+                <span className='event-pill'>
+                  <FontAwesomeIcon icon={icons[currentEvent.type]} /> {currentEvent.type}
+                </span>
+                <h3>
+                  {currentEvent.year} · {currentEvent.title}
+                </h3>
+                <p>{currentEvent.description}</p>
+              </article>
+            ) : null}
+          </section>
+        </Reveal>
       </div>
     </div>
   )
