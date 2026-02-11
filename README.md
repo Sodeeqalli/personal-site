@@ -1,96 +1,71 @@
-# Portfolio React
+# Getting Started with Create React App
 
-Premium single-page portfolio built with React, Framer Motion, and React Three Fiber.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Stack
+## Available Scripts
 
-- React 19 + Create React App
-- Framer Motion for section reveals and UI transitions
-- React Three Fiber + Drei for lightweight hero 3D
-- SCSS with design tokens (`src/styles/tokens.css`)
+In the project directory, you can run:
 
-## Scripts
+### `npm start`
 
-- `npm start` - run development server
-- `npm run build` - production build
-- `npm test -- --watchAll=false` - run tests once
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Content Runbook
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Edit portfolio copy/content
+### `npm test`
 
-All content is centralized in:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- `src/data/portfolioData.js`
+### `npm run build`
 
-Update these exports:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- `heroData` for hero text
-- `aboutData` for about copy and quick facts
-- `toolSkills` for skill names and percentages
-- `portfolioEntries` for projects and certifications
-- `experienceCards` for experience cards
-- `timelineEvents` and `stageNarratives` for journey timeline
-- `socialLinks` for links section
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Add a project or certification
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-1. Add a new object in `portfolioEntries`.
-2. Keep existing shape: `name`, `summary`, `story`, `media`, `cta`, `tags`.
-3. Reuse existing tags or add a new key to `tagLabels`.
+### `npm run eject`
 
-### Change theme / typography
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-Design tokens live in:
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- `src/styles/tokens.css`
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Primary styling system:
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-- `src/styles/portfolio.scss`
+## Learn More
 
-Update color, radius, spacing, font variables in `tokens.css` first.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Motion tuning
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-Shared motion presets are in:
+### Code Splitting
 
-- `src/utils/motion.js`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Use reduced-motion-safe variants from this file.
+### Analyzing the Bundle Size
 
-### 3D hero tuning
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-3D scene component:
+### Making a Progressive Web App
 
-- `src/components/Portfolio/HeroScene.js`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Behavior and lazy-loading controls:
+### Advanced Configuration
 
-- `src/sections/PortfolioPage.js`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-The app auto-disables 3D for reduced-motion users and low-end devices.
+### Deployment
 
-## SEO + Deploy Runbook
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### Metadata
+### `npm run build` fails to minify
 
-- Update meta tags in `public/index.html`.
-- Replace `%PUBLIC_URL%` values with production URL where needed.
-
-### Sitemap and robots
-
-- `public/sitemap.xml`
-- `public/robots.txt`
-
-Replace `https://example.com` with your real domain before deploying.
-
-### Deploy
-
-1. Run `npm run build`.
-2. Deploy the `build/` folder to your host (Cloudflare Pages, Netlify, Vercel, etc.).
-3. Confirm routing serves `index.html` for SPA behavior.
-
-## Notes
-
-Legacy route-based components remain in `src/components/*` but are no longer in the runtime path.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# portfolio-react
